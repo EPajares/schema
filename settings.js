@@ -70,6 +70,7 @@ function generate(){
           "filter": [
             "lowercase",
             "trim",
+            "german_transliteration_multiplexer",
             "icu_folding",
             "remove_ordinals",
             "unique_only_same_position",
@@ -237,6 +238,30 @@ function generate(){
           "type" : "pattern_replace",
           "pattern": " +",
           "replacement": " "
+        },
+        "german_ue_to_u" : {
+          "type" : "pattern_replace",
+          "pattern": "ue",
+          "replacement": "u"
+        },
+        "german_oe_to_o" : {
+          "type" : "pattern_replace",
+          "pattern": "oe",
+          "replacement": "o"
+        },
+        "german_ae_to_a" : {
+          "type" : "pattern_replace",
+          "pattern": "ae",
+          "replacement": "a"
+        },
+        "german_transliteration_multiplexer" : {
+          "type" : "multiplexer",
+          "preserve_original": true,
+          "filters": [
+            "german_ue_to_u",
+            "german_oe_to_o",
+            "german_ae_to_a"
+          ]
         },
         // more generated below
       },

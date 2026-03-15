@@ -142,6 +142,7 @@ module.exports.tests.peliasQueryAnalyzer = function (test, common) {
       ...mayBeAmpersandReplacer(),
       'lowercase',
       'trim',
+      'german_transliteration_multiplexer',
       'icu_folding',
       'remove_ordinals',
       'unique_only_same_position',
